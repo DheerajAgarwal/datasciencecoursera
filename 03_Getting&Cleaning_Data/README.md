@@ -7,7 +7,7 @@ Most steps are listed even in greater detail within the R script itself. Please 
 Read and store the working directory in an object. This will be used to reset the working directory once all the steps in the script are completed.
 
 ### STEP 2
-Assumption: The user does not have the data available in the working directory. If the data (dowloaded an unzipped) is available then this step is redundant.
+Assumption: The user does not have the data available in the working directory. If the data (dowloaded and unzipped) is available then this step is redundant.
 
 	1. Download the zip file from the specified source and unzip it in the working directory.
 	2. Set the working directory as the newly unzipped folder.
