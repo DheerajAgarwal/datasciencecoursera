@@ -20,7 +20,7 @@
 # *****************************************************************
 #----------------------------CODE BOOK-----------------------------
 # *****************************************************************
-#CODE BOOK: <>
+#CODE BOOK: https://github.com/DheerajAgarwal/datasciencecoursera/blob/master/03_Getting%26Cleaning_Data/run_analysis_CodeBook.pdf
 
 # *****************************************************************
 #---------------------RUN ANALYSIS---------------------------------
@@ -31,9 +31,9 @@
         #This operation will require changing the working directory and hence a value of the current path is stored so that it could be reverted back to its original state.
 baseWD <- getwd()
 
-#download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",destfile = "UCI HAR Dataset.zip", quiet=TRUE)
+download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",destfile = "UCI HAR Dataset.zip", quiet=TRUE)
 
-#unzip("UCI HAR Dataset.zip")
+unzip("UCI HAR Dataset.zip")
 
 setwd("./UCI HAR Dataset/")
 
@@ -114,6 +114,11 @@ result <- result_unsorted[with(result_unsorted, order(Subject, Activity)), ]
         # deleting unnecessary variable
 rm(master_data);rm(master_ms); rm(datadim); rm(totcol);
 rm(inc_filter); rm(group_by); rm(result_unsorted)
+
+# writing the tidy data set in a text file
+write.table(result,file="Tidy_Data.txt",row.names = FALSE)
+
+# The next set of code is purely optional and created only for better user experience.
 
 cat(rep("\n",2))
 print("Opening the TIDY data in view mode. Please check out source pane!")
