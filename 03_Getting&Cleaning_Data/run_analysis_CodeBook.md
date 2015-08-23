@@ -46,12 +46,12 @@ Hence after aggregation and calculation of mean, total observations will be 180.
 ###Descriptive columns [1:2]
 ####Subject
 Identifies the volunteer who was subjected to the test.
-```2
+'''2
 
 1 – 30
 
 [n] – Volunteer [n] 	#example: n=7 will represent volunteer 7
-```
+'''
 
 ####Activity
 The test is based on 6 different activities named 1-6 in the original data source, but with descriptions in the Tidy data set.
