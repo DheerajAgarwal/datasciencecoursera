@@ -12,9 +12,11 @@ List of useful commands
 * dim(result)
 * head(result)
 * unique(result$Activity)
-* summary(result[n])  		where ‘n’ is between 3 and 68. 
+* summary(result[n]) where ‘n’ is between 3 and 68.
+
 ###Where can I find the R code?
 R code is posted publicly on GitHub at the user repository available here. This location will also have a README.md file as well as this codebook.
+
 ###What is the source of this tidy data?
 This tidy data is a result of cleaning activity on the source data which can be found at
 Source: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
@@ -29,6 +31,7 @@ To create one R script called run_analysis.R that does the following:
 * Uses descriptive activity names to name the activities in the data set
 * Appropriately labels the data set with descriptive variable names. 
 * From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
 ####Rationale:
 Given the above objectives, the R code, populates the column names from the features.txt file and then filters out any records that do not have the phrase ‘mean()’ or ‘std()’ in it. There are certain columns in the original data set that had phrases like ‘meanFreq’ etc. but have not been taken into consideration.
 The original data set had 561 columns. 2 new columns were added to include subject and activity making a total of 563 columns in the data set.
@@ -38,6 +41,7 @@ The number of rows at this point in time was greater than 10K. Per the objective
 * Total Activities = 6
 Hence after aggregation and calculation of mean, total observations will be 180.
 The final output hence will have 180 rows & 68 columns.
+
 ##Column Definitions
 ###Descriptive columns [1:2]
 ####Subject
