@@ -103,27 +103,27 @@ Standard deviation of time domain for body acceleration in Y direction
 18
 -1..1
 Standard deviation of time domain for body acceleration in Z direction
-tGravityAcc-mean()-X**	
+**tGravityAcc-mean()-X**	
 17
 Mean of time domain for gravitational acceleration in X direction
-tGravityAcc-mean()-Y**	
+**tGravityAcc-mean()-Y**	
 18
 -1..1
 Mean of time domain for gravitational acceleration in Y direction
-tGravityAcc-mean()-Z**	
+**tGravityAcc-mean()-Z**	
 12
 -1..1
 Mean of time domain for gravitational acceleration in Z direction
- 
-tGravityAcc-std()-X**	
+
+**tGravityAcc-std()-X**	
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
-tGravityAcc-std()-Y**	
+**tGravityAcc-std()-Y**	
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
-tGravityAcc-std()-Z**	
+**tGravityAcc-std()-Z**	
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
@@ -207,11 +207,11 @@ Mean of the magnitude of the time domain for body acceleration
 18
 -1..1
 Standard deviation of the magnitude of the time domain for body acceleration
-tGravityAccMag-mean()**	
+**tGravityAccMag-mean()**	
 18
 -1..1
 Mean of the magnitude of the time domain for gravitational acceleration
-tGravityAccMag-std()**	
+**tGravityAccMag-std()**	
 18
 -1..1
 Mean of the magnitude of the time domain for gravitational acceleration
@@ -259,7 +259,7 @@ Standard deviation of frequency domain for body acceleration in X direction
 14
 -1..1
 Standard deviation of frequency domain for body acceleration in Y direction
- 
+
 **fBodyAcc-std()-Z**	
 18
 -1..1
@@ -332,7 +332,7 @@ Standard deviation of the magnitude of frequency domain for body linear accelera
 18
 -1..1
 Mean of the magnitude of frequency domain for body using a gyroscope
- 
+
 **fBodyBodyGyroMag-std()**	
 18
 -1..1
