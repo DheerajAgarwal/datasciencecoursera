@@ -52,8 +52,11 @@ Identifies the volunteer who was subjected to the test.
 
 ####Activity
 The test is based on 6 different activities named 1-6 in the original data source, but with descriptions in the Tidy data set.
+
 6
+
 1 – 6
+
 ..1. WALKING
 ..2. WALKING_UPSTAIRS
 ..3. WALKING_DOWNSTAIRS
