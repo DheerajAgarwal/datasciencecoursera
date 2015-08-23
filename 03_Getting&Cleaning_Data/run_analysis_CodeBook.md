@@ -608,4 +608,4 @@ Standard deviation of the magnitude of frequency domain for body linear accelera
 ```
 
 **NOTE:**
-This document is only for reference and created as an original document based on my understanding of the course objective and its intention. If you are planning to take this course or currently taking it, please use this only as a reference and a guide to understand my viewpoint and approach. Do not copy stuff from here. It may help you complete the course but will not help you learn write a codebook.
+This document is only for reference and created as an original document based on my understanding of the course objective and its intention. If you are planning to take this course or currently taking it, please use this only as a reference and a guide to understand my viewpoint and approach. Do not copy stuff from here. 
