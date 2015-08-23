@@ -79,31 +79,44 @@ Each table name is a composite of several parameters.
 * ‘tBodyAcc-mean()-X’ is read as: Mean of the time signal of Body measurement from an accelerometer in X axis.
 * ‘fBodyGyroJerkMag-std()’ is read as: Standard Deviation of the magnitude of the frequency signal of the linear acceleration & angular velocity (jerk) of Body measurement from a gyroscope.
 
-**tBodyAcc-mean()-X**	
+**tBodyAcc-mean()-X**
+	
 17
 -1..1
 Mean of time domain for body acceleration in X direction
-**tBodyAcc-mean()-Y**	
+
+**tBodyAcc-mean()-Y**
+	
 19
 -1..1
 Mean of time domain for body acceleration in Y direction
-**tBodyAcc-mean()-Z**	
+
+**tBodyAcc-mean()-Z**
+	
 18
 -1..1
 Mean of time domain for body acceleration in Z direction
-**tBodyAcc-std()-X**	
+
+**tBodyAcc-std()-X**
+	
 18
 -1..1
 Standard deviation of time domain for body acceleration in X direction
-**tBodyAcc-std()-Y**	
+
+**tBodyAcc-std()-Y**
+
 17
 -1..1
 Standard deviation of time domain for body acceleration in Y direction
-**tBodyAcc-std()-Z**	
+
+**tBodyAcc-std()-Z**
+	
 18
 -1..1
 Standard deviation of time domain for body acceleration in Z direction
-**tGravityAcc-mean()-X**	
+
+**tGravityAcc-mean()-X**
+
 17
 Mean of time domain for gravitational acceleration in X direction
 **tGravityAcc-mean()-Y**	
