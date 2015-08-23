@@ -7,12 +7,12 @@ This codebook acts as a basic reference document for the course project output g
 ###How to use this codebook?
 Each section serves a different purpose and it may be helpful to look at the R code as well as the final output simultaneously to understand the definitions listed here. The column definition section will help define what each column is named, what it means, field length, the possible values and any factor translation if required. Use the following commands in R console or RStudio or any other IDE that you may use to work with R while referring to this document. The list of command(s) is not exhaustive and is by no means meant to indicate as the only way to understand this document better.
 List of useful commands
-*View(result)
-*names(result)
-*dim(result)
-*head(result)
-*unique(result$Activity)
-*summary(result[n])  		where ‘n’ is between 3 and 68. 
+* View(result)
+* names(result)
+* dim(result)
+* head(result)
+* unique(result$Activity)
+* summary(result[n])  		where ‘n’ is between 3 and 68. 
 ###Where can I find the R code?
 R code is posted publicly on GitHub at the user repository available here. This location will also have a README.md file as well as this codebook.
 ###What is the source of this tidy data?
@@ -22,33 +22,30 @@ A full description is available at the site where the data was obtained.
 Site: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones 
 
 ###The rationale for coming up with this tidy data?
-Course objective:
+####Course objective:
 To create one R script called run_analysis.R that does the following: 
-1.	Merges the training and the test sets to create one data set.
-2.	Extracts only the measurements on the mean and standard deviation for each measurement. 
-3.	Uses descriptive activity names to name the activities in the data set
-4.	Appropriately labels the data set with descriptive variable names. 
-5.	From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
-Rationale:
+* Merges the training and the test sets to create one data set.
+* Extracts only the measurements on the mean and standard deviation for each measurement. 
+* Uses descriptive activity names to name the activities in the data set
+* Appropriately labels the data set with descriptive variable names. 
+* From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+####Rationale:
 Given the above objectives, the R code, populates the column names from the features.txt file and then filters out any records that do not have the phrase ‘mean()’ or ‘std()’ in it. There are certain columns in the original data set that had phrases like ‘meanFreq’ etc. but have not been taken into consideration.
 The original data set had 561 columns. 2 new columns were added to include subject and activity making a total of 563 columns in the data set.
 This resultant was then subset using the criteria for mean and standard deviation to arrive at the table that had 68 columns in total.
 The number of rows at this point in time was greater than 10K. Per the objective, the mean of each column was calculated and result grouped by Subject and Activity.
-Total Subjects = 30
-Total Activities = 6
+* Total Subjects = 30
+* Total Activities = 6
 Hence after aggregation and calculation of mean, total observations will be 180.
 The final output hence will have 180 rows & 68 columns.
-
-
- 
-Column Definitions
-Descriptive columns [1:2]
-Subject
-Identifies the volunteer who was subjected to the test
+##Column Definitions
+###Descriptive columns [1:2]
+####Subject
+Identifies the volunteer who was subjected to the test.
 2
-1 – 30 
+1 – 30
 [n] – Volunteer [n] 	#example: n=7 will represent volunteer 7
-Activity
+####Activity
 The test is based on 6 different activities named 1-6 in the original data source, but with descriptions in the Tidy data set.
 6
 1 – 6  
