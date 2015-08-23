@@ -5,7 +5,7 @@
 ###What is this document? 
 This codebook acts as a basic reference document for the course project output generated as part of the 2015 Coursera Getting & Cleaning data project. Simply put it is a data dictionary put together to explain what the contents of the final output mean. It will details the possible values, meaning of the columns and also provide additional notes where ever necessary.
 ###How to use this codebook?
-Each section serves a different purpose and it may be helpful to look at the R code as well as the final output simultaneously to understand the definitions listed here. The column definition section will help define what each column is named, what it means, field length, the possible values and any factor translation if required. Use the following commands in R console or RStudio or any other IDE that you may use to work with R while referring to this document. The list of command(s) is not exhaustive and is by no means meant to indicate as the only way to understand this document better.
+Each section serves a different purpose and it may be helpful to look at the R code as well as the final output simultaneously to understand the definitions listed here. The column definition section will help define what each column is **named**, its **meaning**, **field length**, **the possible values** and any **factor translation** if required. Use the following commands in R console or RStudio or any other IDE that you may use to work with R while referring to this document. The list of command(s) is not exhaustive and is by no means meant to indicate as the only way to understand this document better.
 List of useful commands
 * View(result)
 * names(result)
@@ -53,16 +53,14 @@ Identifies the volunteer who was subjected to the test.
 ####Activity
 The test is based on 6 different activities named 1-6 in the original data source, but with descriptions in the Tidy data set.
 
-6
-
-1 – 6
-
-..1. WALKING
-..2. WALKING_UPSTAIRS
-..3. WALKING_DOWNSTAIRS
-..4. SITTING
-..5. STANDING
-..6. LAYING
+>6
+>1 – 6
+>..1. WALKING
+>..2. WALKING_UPSTAIRS
+>..3. WALKING_DOWNSTAIRS
+>..4. SITTING
+>..5. STANDING
+>..6. LAYING
 
 ####Measurement Columns [3:68]
 Each table name is a composite of several parameters.
