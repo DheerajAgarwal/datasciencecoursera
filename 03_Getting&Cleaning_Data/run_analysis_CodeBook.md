@@ -12,7 +12,7 @@ List of useful commands
 * dim(result)
 * head(result)
 * unique(result$Activity)
-* summary(result[n])  		where ‘n’ is between 3 and 68. 
+* summary(result[n])  		where ‘n’ is between 3 and 68.
 ###Where can I find the R code?
 R code is posted publicly on GitHub at the user repository available here. This location will also have a README.md file as well as this codebook.
 ###What is the source of this tidy data?
