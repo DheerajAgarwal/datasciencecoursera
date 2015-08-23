@@ -119,247 +119,360 @@ Standard deviation of time domain for body acceleration in Z direction
 
 17
 Mean of time domain for gravitational acceleration in X direction
-**tGravityAcc-mean()-Y**	
+
+**tGravityAcc-mean()-Y**
+	
 18
 -1..1
 Mean of time domain for gravitational acceleration in Y direction
-**tGravityAcc-mean()-Z**	
+
+**tGravityAcc-mean()-Z**
+	
 12
 -1..1
 Mean of time domain for gravitational acceleration in Z direction
 
 **tGravityAcc-std()-X**	
+
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
+
 **tGravityAcc-std()-Y**	
+
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
+
 **tGravityAcc-std()-Z**	
+
 18
 -1..1
 Standard deviation of time domain for gravitational acceleration in X direction
-**tBodyAccJerk-mean()-X**	
+
+**tBodyAccJerk-mean()-X**
+
 18
 -1..1
 Mean of time domain for body linear acceleration and angular velocity in X direction
-**tBodyAccJerk-mean()-Y**	
+
+**tBodyAccJerk-mean()-Y**
+	
 18
 -1..1
 Mean of time domain for body linear acceleration and angular velocity in Y direction
-**tBodyAccJerk-mean()-Z**	
+
+**tBodyAccJerk-mean()-Z**
+
 20
 -1..1
 Mean of time domain for body linear acceleration and angular velocity in Z direction
+
 **tBodyAccJerk-std()-X**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity in X direction
+
 **tBodyAccJerk-std()-Y**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity in Y direction
-**tBodyAccJerk-std()-Z**	
+
+**tBodyAccJerk-std()-Z**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity in Z direction
+
 **tBodyGyro-mean()-X**
+
 15
 -1..1
 Mean of time domain for body using gyroscope in X direction
-**tBodyGyro-mean()-Y**	
+
+**tBodyGyro-mean()-Y**
+
 19
 -1..1
 Mean of time domain for body using gyroscope in Y direction
-**tBodyGyro-mean()-Z**	
+
+**tBodyGyro-mean()-Z**
+
 18
 -1..1
 Mean of time domain for body using gyroscope in Z direction
-**tBodyGyro-std()-X**	
+
+**tBodyGyro-std()-X**
+	
 18
 -1..1
 Standard deviation of time domain for body using gyroscope in X direction
-**tBodyGyro-std()-Y**	
+
+**tBodyGyro-std()-Y**
+
 19
 -1..1
 Standard deviation of time domain for body using gyroscope in Y direction
-**tBodyGyro-std()-Z**	
+
+**tBodyGyro-std()-Z**
+
 18
 -1..1
 Standard deviation of time domain for body using gyroscope in Z direction
-**tBodyGyroJerk-mean()-X**	
+
+**tBodyGyroJerk-mean()-X**
+	
 19
 -1..1
 Mean of time domain for body linear acceleration and angular velocity using a gyroscope in X direction
-**tBodyGyroJerk-mean()-Y**	
+
+**tBodyGyroJerk-mean()-Y**
+
 19
 -1..1
 Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction
-**tBodyGyroJerk-mean()-Z**	
+
+**tBodyGyroJerk-mean()-Z**
+
 19
 -1..1
 Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction
-**tBodyGyroJerk-std()-X**	
+
+**tBodyGyroJerk-std()-X**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in X direction
-**tBodyGyroJerk-std()-Y**	
+
+**tBodyGyroJerk-std()-Y**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction
-**tBodyGyroJerk-std()-Z**	
+
+**tBodyGyroJerk-std()-Z**
+
 18
 -1..1
 Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction
-**tBodyAccMag-mean()**	
+
+**tBodyAccMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of the time domain for body acceleration
-**tBodyAccMag-std()**	
+
+**tBodyAccMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of the time domain for body acceleration
-**tGravityAccMag-mean()**	
+
+**tGravityAccMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of the time domain for gravitational acceleration
-**tGravityAccMag-std()**	
+
+**tGravityAccMag-std()**
+
 18
 -1..1
 Mean of the magnitude of the time domain for gravitational acceleration
-**tBodyAccJerkMag-mean()**	
+
+**tBodyAccJerkMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of time domain for body linear acceleration and angular velocity
-**tBodyAccJerkMag-std()**	
+
+**tBodyAccJerkMag-std()**
+
 19
 -1..1
 Standard deviation of the magnitude of time domain for body linear acceleration and angular velocity
+
 **tBodyGyroMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of time domain for body using a gyroscope
-**tBodyGyroMag-std()**	
+
+**tBodyGyroMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of time domain for body using a gyroscope
-**tBodyGyroJerkMag-mean()**	
+
+**tBodyGyroJerkMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of time domain for body linear acceleration and angular velocity using a gyroscope
-**tBodyGyroJerkMag-std()**	
+
+**tBodyGyroJerkMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of time domain for body linear acceleration and angular velocity
-**fBodyAcc-mean()-X**	
+
+**fBodyAcc-mean()-X**
+
 18
 -1..1
 Mean of frequency domain for body acceleration in X direction
-**fBodyAcc-mean()-Y**	
+
+**fBodyAcc-mean()-Y**
+
 18
 -1..1
 Mean of frequency domain for body acceleration in Y direction
-**fBodyAcc-mean()-Z**	
+
+**fBodyAcc-mean()-Z**
+
 18
 -1..1
 Mean of frequency domain for body acceleration in Z direction
-**fBodyAcc-std()-X**	
+
+**fBodyAcc-std()-X**
+
 18
 -1..1
 Standard deviation of frequency domain for body acceleration in X direction
-**fBodyAcc-std()-Y**	
+
+**fBodyAcc-std()-Y**
+
 14
 -1..1
 Standard deviation of frequency domain for body acceleration in Y direction
 
-**fBodyAcc-std()-Z**	
+**fBodyAcc-std()-Z**
+	
 18
 -1..1
 Standard deviation of frequency domain for body acceleration in Z direction
-**fBodyAccJerk-mean()-X**	
+
+**fBodyAccJerk-mean()-X**
+
 18
 -1..1
 Mean of frequency domain for body linear acceleration and angular velocity in X direction
-**fBodyAccJerk-mean()-Y**	
+
+**fBodyAccJerk-mean()-Y**
+
 19
 -1..1
 Mean of frequency domain for body linear acceleration and angular velocity in Y direction
-**fBodyAccJerk-mean()-Z**	
+
+**fBodyAccJerk-mean()-Z**
+
 18
 -1..1
 Mean of frequency domain for body linear acceleration and angular velocity in Z direction
-**fBodyAccJerk-std()-X**	
+
+**fBodyAccJerk-std()-X**
+
 18
 -1..1
 Standard deviation of frequency domain for body linear acceleration and angular velocity in X direction
-**fBodyAccJerk-std()-Y**	
+
+**fBodyAccJerk-std()-Y**
+
 14
 -1..1
 Standard deviation of frequency domain for body linear acceleration and angular velocity in Y direction
-**fBodyAccJerk-std()-Z**	
+
+**fBodyAccJerk-std()-Z**
+
 18
 -1..1
 Standard deviation of frequency domain for body linear acceleration and angular velocity in Z direction
+
 **fBodyGyro-mean()-X**
+
 18
 -1..1
 Mean of frequency domain for body using a gyroscope in X direction
-**fBodyGyro-mean()-Y**	
+
+**fBodyGyro-mean()-Y**
+
 18
 -1..1
 Mean of frequency domain for body using a gyroscope in Y direction
-**fBodyGyro-mean()-Z**	
+
+**fBodyGyro-mean()-Z**
+
 18
 -1..1
 Mean of frequency domain for body using a gyroscope in Z direction
-**fBodyGyro-std()-X**	
+
+**fBodyGyro-std()-X**
+
 18
 -1..1
 Standard deviation of frequency domain for body using a gyroscope in X direction
-**fBodyGyro-std()-Y**	
+
+**fBodyGyro-std()-Y**
+
 19
 -1..1
 Standard deviation of frequency domain for body using a gyroscope in Y direction
-**fBodyGyro-std()-Z**	
+
+**fBodyGyro-std()-Z**
+
 18
 -1..1
 Standard deviation of frequency domain for body using a gyroscope in Z direction
-**fBodyAccMag-mean()**	
+
+**fBodyAccMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of the frequency domain for body
-**fBodyAccMag-std()**	
+
+**fBodyAccMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of the frequency domain for body
-**fBodyBodyAccJerkMag-mean()**	
+
+**fBodyBodyAccJerkMag-mean()**
+
 19
 -1..1
 Mean of the magnitude of frequency domain for body linear acceleration and angular velocity
-**fBodyBodyAccJerkMag-std()**	
+
+**fBodyBodyAccJerkMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of frequency domain for body linear acceleration and angular velocity
-**fBodyBodyGyroMag-mean()**	
+
+**fBodyBodyGyroMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of frequency domain for body using a gyroscope
 
-**fBodyBodyGyroMag-std()**	
+**fBodyBodyGyroMag-std()**
+
 18
 -1..1
 Mean of the magnitude of frequency domain for body using a gyroscope
-**fBodyBodyGyroJerkMag-mean()**	
+
+**fBodyBodyGyroJerkMag-mean()**
+
 18
 -1..1
 Mean of the magnitude of frequency domain for body linear acceleration and angular velocity using a gyroscope
-**fBodyBodyGyroJerkMag-std()**	
+
+**fBodyBodyGyroJerkMag-std()**
+
 18
 -1..1
 Standard deviation of the magnitude of frequency domain for body linear acceleration and angular velocity using a gyroscope
 
-
-
-NOTE: 
+**NOTE:**
 This document is only for reference and created as an original document based on my understanding of the course objective and its intention. If you are planning to take this course or currently taking it, please use this only as a reference and a guide to understand my viewpoint and approach. Do not copy stuff from here. It may help you complete the course but will not help you learn write a codebook.
