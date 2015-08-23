@@ -137,14 +137,16 @@ Mean of time domain for gravitational acceleration in X direction.
 
 **tGravityAcc-mean()-Y**
 	
-```18
+```
+18
 -1 to 1
 Mean of time domain for gravitational acceleration in Y direction.
 ```
 
 **tGravityAcc-mean()-Z**
 	
-```12
+```
+12
 -1 to 1
 Mean of time domain for gravitational acceleration in Z direction.
 ```
@@ -159,7 +161,8 @@ Standard deviation of time domain for gravitational acceleration in X direction.
 
 **tGravityAcc-std()-Y**	
 
-```18
+```
+18
 -1 to 1
 Standard deviation of time domain for gravitational acceleration in X direction.
 ```
@@ -214,81 +217,107 @@ Standard deviation of time domain for body linear acceleration and angular veloc
 
 **tBodyAccJerk-std()-Z**
 
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body linear acceleration and angular velocity in Z direction.```
+Standard deviation of time domain for body linear acceleration and angular velocity in Z direction.
+```
 
 **tBodyGyro-mean()-X**
 
-```15
+```
+15
 -1 to 1
-Mean of time domain for body using gyroscope in X direction.```
+Mean of time domain for body using gyroscope in X direction.
+```
 
 **tBodyGyro-mean()-Y**
 
-```19
+```
+19
 -1 to 1
-Mean of time domain for body using gyroscope in Y direction.```
+Mean of time domain for body using gyroscope in Y direction.
+```
 
 **tBodyGyro-mean()-Z**
 
-```18
+```
+18
 -1 to 1
-Mean of time domain for body using gyroscope in Z direction.```
+Mean of time domain for body using gyroscope in Z direction.
+```
 
 **tBodyGyro-std()-X**
 	
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body using gyroscope in X direction.```
+Standard deviation of time domain for body using gyroscope in X direction.
+```
 
 **tBodyGyro-std()-Y**
 
-```19
+```
+19
 -1 to 1
-Standard deviation of time domain for body using gyroscope in Y direction.```
+Standard deviation of time domain for body using gyroscope in Y direction.
+```
 
 **tBodyGyro-std()-Z**
 
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body using gyroscope in Z direction.```
+Standard deviation of time domain for body using gyroscope in Z direction.
+```
 
 **tBodyGyroJerk-mean()-X**
 	
-```19
+```
+19
 -1 to 1
-Mean of time domain for body linear acceleration and angular velocity using a gyroscope in X direction.```
+Mean of time domain for body linear acceleration and angular velocity using a gyroscope in X direction.
+```
 
 **tBodyGyroJerk-mean()-Y**
 
-```19
+```
+19
 -1 to 1
-Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction.```
+Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction.
+```
 
 **tBodyGyroJerk-mean()-Z**
 
-```19
+```
+19
 -1 to 1
-Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction.```
+Mean of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction.
+```
 
 **tBodyGyroJerk-std()-X**
 
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in X direction.```
+Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in X direction.
+```
 
 **tBodyGyroJerk-std()-Y**
 
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction.```
+Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Y direction.
+```
 
 **tBodyGyroJerk-std()-Z**
 
-```18
+```
+18
 -1 to 1
-Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction.```
+Standard deviation of time domain for body linear acceleration and angular velocity using a gyroscope in Z direction.
+```
 
 **tBodyAccMag-mean()**
 
