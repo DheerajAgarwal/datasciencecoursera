@@ -12,12 +12,8 @@ List of useful commands
 * dim(result)
 * head(result)
 * unique(result$Activity)
-<<<<<<< HEAD
 * summary(result[n]) where ‘n’ is between 3 and 68.
 
-=======
-* summary(result[n])  		where ‘n’ is between 3 and 68.
->>>>>>> origin/master
 ###Where can I find the R code?
 R code is posted publicly on GitHub at the user repository available here. This location will also have a README.md file as well as this codebook.
 
@@ -43,8 +39,8 @@ This resultant was then subset using the criteria for mean and standard deviatio
 The number of rows at this point in time was greater than 10K. Per the objective, the mean of each column was calculated and result grouped by Subject and Activity.
 * Total Subjects = 30
 * Total Activities = 6
-Hence after aggregation and calculation of mean, total observations will be 180.
-The final output hence will have 180 rows & 68 columns.
+
+Hence after aggregation and calculation of mean, total observations will be 180. The final output hence will have 180 rows & 68 columns.
 
 ##Column Definitions
 ###Descriptive columns [1:2]
@@ -53,27 +49,30 @@ Identifies the volunteer who was subjected to the test.
 2
 1 – 30
 [n] – Volunteer [n] 	#example: n=7 will represent volunteer 7
+
 ####Activity
 The test is based on 6 different activities named 1-6 in the original data source, but with descriptions in the Tidy data set.
 6
-1 – 6  
-WALKING – 1 
-WALKING_UPSTAIRS – 2 
-WALKING_DOWNSTAIRS – 3 
-SITTING – 4 
-STANDING – 5   
-LAYING – 6 
-Measurement Columns [3:68]
+1 – 6
+1. WALKING
+2. WALKING_UPSTAIRS
+3. WALKING_DOWNSTAIRS
+4. SITTING
+5. STANDING
+6. LAYING
+
+####Measurement Columns [3:68]
 Each table name is a composite of several parameters.
-•	The first alphabet in the table name denotes either a time or a frequency signal. If the signal is time then the first letter is ‘t’ else it is ‘f’.
-•	The second component is a breakdown of the third signal (see third component) where the signal is either ‘Body’ or ‘Gravity’
-•	The third component is a measurement that captures the source of the signal. If the source is an accelerometer then it is represented by ‘Acc’. If the source is gyroscope then it is represented by ‘Gyro’.
-•	The fourth component is either ‘mean()’ or ‘std()’ which represents the mean of the measurement and the standard deviation respectively.
-•	Each of the above measurements or components together apply to a 3-axial measurement system, where each axis is represented by either ‘X’ or ‘Y’ or ‘Z’.
-•	Certain columns with have a fifth element which could be either ‘Jerk’ or ‘Mag’ or a combination represented as ‘JerkMag’. ‘Jerk’ represents a body’s linear acceleration and angular velocity. ‘Mag’ is the magnitude of the three-dimensional signals.
-Examples:
-‘tBodyAcc-mean()-X’ is read as: Mean of the time signal of Body measurement from an accelerometer in X axis.
-‘fBodyGyroJerkMag-std()’ is read as: Standard Deviation of the magnitude of the frequency signal of the linear acceleration & angular velocity (jerk) of Body measurement from a gyroscope.
+* The first alphabet in the table name denotes either a time or a frequency signal. If the signal is time then the first letter is ‘t’ else it is ‘f’.
+* The second component is a breakdown of the third signal (see third component) where the signal is either ‘Body’ or ‘Gravity’
+* The third component is a measurement that captures the source of the signal. If the source is an accelerometer then it is represented by ‘Acc’. If the source is gyroscope then it is represented by ‘Gyro’.
+* The fourth component is either ‘mean()’ or ‘std()’ which represents the mean of the measurement and the standard deviation respectively.
+* Each of the above measurements or components together apply to a 3-axial measurement system, where each axis is represented by either ‘X’ or ‘Y’ or ‘Z’.
+* Certain columns with have a fifth element which could be either ‘Jerk’ or ‘Mag’ or a combination represented as ‘JerkMag’. ‘Jerk’ represents a body’s linear acceleration and angular velocity. ‘Mag’ is the magnitude of the three-dimensional signals.
+
+**Examples:**
+1. ‘tBodyAcc-mean()-X’ is read as: Mean of the time signal of Body measurement from an accelerometer in X axis.
+2. ‘fBodyGyroJerkMag-std()’ is read as: Standard Deviation of the magnitude of the frequency signal of the linear acceleration & angular velocity (jerk) of Body measurement from a gyroscope.
 tBodyAcc-mean()-X	
 17
 -1..1
