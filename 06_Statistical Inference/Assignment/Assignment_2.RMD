@@ -1,0 +1,140 @@
+---
+title: 'JHU Coursera: Statistical Inference Assignment1_2: '
+author: "Dheeraj Agarwal"
+date: "October 24, 2015"
+output:
+  pdf_document:
+    toc: yes
+  html_document:
+    keep_md: yes
+---
+
+# SCOPE:
+1. Load the ToothGrowth data and perform some basic exploratory data analyses.  
+2. Provide a basic summary of the data.  
+3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering).  
+4. State your conclusions and the assumptions needed for your conclusion  
+
+***  
+#### *Global Settings*  
+The below global setting allow the code to be visible and switches the scientific notation of large numbers, if any, off.  
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE, options(scipen=999))
+library(ggplot2)
+```  
+***  
+## **PART 1: DATA LOAD & EXPLORATORY ANALYIS**
+______________________________________________________  
+
+The below section will load the data as well as perform some function based basic exploratoy analysis. 
+```{r explo_analysis1}
+library(datasets)
+data("ToothGrowth")
+head(ToothGrowth, 5) # Display the first 5 rows and all columns
+dim(ToothGrowth) # No of Rows and Columns in the entire data set
+```  
+
+All the three columns has the following classes: 
+**`r class(ToothGrowth$len)`**, **`r class(ToothGrowth$supp)`** & **`r class(ToothGrowth$dose)`** respectively.
+
+```{r explo_analysis2}
+range(ToothGrowth$len)
+unique (ToothGrowth$supp)
+unique (ToothGrowth$dose)
+group <- aggregate(ToothGrowth[,1], as.list(ToothGrowth[,2:3]), FUN=median)
+colnames(group)[3] <- "MedianLength"
+group
+``` 
+
+The above median calculations are also depicted below with the help of the box plots. 
+
+```{r plots}
+# Plotting the data for each quantity of dose and
+ # delivery method against length of tooth in the guinea pigs.
+ggplot(data = ToothGrowth, aes(x=as.factor(dose), y=len))+
+        geom_boxplot(
+                col = "black", 
+                fill = c("indianred2", "dodgerblue", "green2"), 
+                alpha = 0.4
+        ) +
+        labs(title = "Plot ", x = "Values", y = "TBD") + 
+        facet_grid(supp ~ .)
+```  
+
+Based on the above boxplot, we can see that there is a marked shift in the tooth length as dosage increase. Based on the median values it also appears that that tooth length vary by the supplement type (OJ vs VC).  
+
+## **PART 2: HYPOTHESIS FORMULATION & INFERENTIAL ANALYSIS**
+______________________________________________________  
+
+Given the above exploratory analysis, the:  
+* First NULL Hypothesis or H0(1) is: OJ and VC have different effects on tooth length  
+* Second NULL Hypothesis or H0(2) is: Dosage has an increaing effect on tooth length
+
+**Data Prep**
+```{r data_prep4_ht}
+supp_val <- split(ToothGrowth$len, ToothGrowth$supp)
+sapply(supp_val,var)
+dose_val <- split(ToothGrowth$len, ToothGrowth$dose)
+sapply(dose_val,var)
+```
+
+These variances are not close to each other hence any subsequent t-tests cannot be assumed to have a constant variance. Also the values cannot be considered paired for t-tests. This is because the tests were performed on different populations. That is the same subjects were not provided both the tests. Now, the reason a t-test is considered and not any other is because the t-test will help support (or contradict) the inferences made by the plots alone. That is test the hypothesis.
+
+**Testing NULL Hypothesis 1**
+```{r H0(1)}
+t.test(
+        ToothGrowth$len[ToothGrowth$supp == "VC"],
+        ToothGrowth$len[ToothGrowth$supp == "OJ"], 
+        paired=FALSE, var.equal=FALSE
+)
+```
+
+From the values above, there are two important observations:
+1. the **p value** is **0.06**
+2. the 95% confidence interval is **-7.57 to 0.17**
+
+That is the 95% confidence interval contains the value 0 and pvalue is greater than the usual standard of 5%. Hence we ***can reject the NULL***. It cannot be conclusively said if the supplment type makes an impactful difference.
+
+**Testing NULL Hypothesis 2**
+
+For this test, we will run t-tests for two samples at a time. Since we have 3 different dosages, we will have 3 samples with two dosages selected at a time for tests.
+
+At first, comparing the 0.5 and 1 mg dosages
+```{r H0(2)_1}
+t.test(
+        ToothGrowth$len[ToothGrowth$dose==1],
+        ToothGrowth$len[ToothGrowth$dose==0.5], 
+        paired = FALSE, var.equal = FALSE
+)
+```
+
+Comparing the 0.5 and 2 mg dosage
+```{r H0(2)_2}
+t.test(
+        ToothGrowth$len[ToothGrowth$dose==2],
+        ToothGrowth$len[ToothGrowth$dose==0.5], 
+        paired = FALSE, var.equal = FALSE
+)
+```
+
+And finally comparing the 1 mg and 2 mg dosage
+```{r H0(2)_3}
+t.test(
+        ToothGrowth$len[ToothGrowth$dose==2],
+        ToothGrowth$len[ToothGrowth$dose==1], 
+        paired = FALSE, var.equal = FALSE
+)
+```
+
+Consolidating all the above results in a table. The confidence interval range is rounded to 2 decimals.
+
+**Measure**     | **p-value**  | **95% confidence interval**
+--------------- | ------------ | --------------
+*0.5 & 1.0 mg*  |       0      | 06.28 - 11.98
+*0.5 & 2.0 mg*  |       0      | 12.83 - 18.16
+*1.0 & 2.0 mg*  |       0      | 03.77 - 9.00
+
+In all cases, the **p-value** is **0**. Also the 95% confidence interval in all instances, do not contain **0** hence we ***cannot reject the NULL***. There is a marked impact of dosage on the tooth length.
+
+***  
+DISCLAIMER: This concludes my report based on my understanding of the problem statements. This report was created as part of Coursera Data Science Specialization::Reproducible Research course starting Oct 5th 2015. Please feel free to use it as a reference, however if you are taking the course yourself, please do not copy it.

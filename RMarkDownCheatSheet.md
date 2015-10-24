@@ -2,7 +2,7 @@ Plain text
 End a line with two spaces to start a new paragraph.  
 *italics* and _italics_
 **bold** and __bold__
-superscript^2^
+superscript^2^  
 ~~strikethrough~~
 [link](www.rstudio.com)
 # Header 1
@@ -28,7 +28,7 @@ horizontal rule (or slide break):
 1. ordered list
 2. item 2
  + sub-item 1
- + sub-item 2
+ + sub-item 2  
 Table Header | Second Header
 ------------- | -------------
 Table Cell | Cell 2
