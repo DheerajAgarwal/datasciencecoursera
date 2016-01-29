@@ -8,4 +8,10 @@ The goal of your project is to predict the manner in which they did the exercise
 The RMD file is in the same repo.
 
 ##Compiled HTML file
+**ON Github**  
 http://dheerajagarwal.github.io/MachineLearning_Assignment.html
+
+OR
+
+**ON RPubs**  
+http://www.rpubs.com/DheerajAgarwal/MachineLearn
