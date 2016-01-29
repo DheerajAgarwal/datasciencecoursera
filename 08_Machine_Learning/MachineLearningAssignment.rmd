@@ -1,0 +1,126 @@
+---
+title: "PracticalMachineLearning"
+author: "Dheeraj Agarwal"
+date: "January 28, 2016"
+output: html_document
+---
+# Scope:  
+One thing that people regularly do is quantify ***how much*** of a particular activity they do, but they rarely quantify ***how well*** they do it. In this project, the goal is to use data from accelerometers of 6 participants and predict the manner in which they did the exercise. This is the *classe* variable in the training set. Use any of the other variables to predict with and describe how the model was built, cross validated, what the expected out of sample error is, and why were  the choices made were made. This model will also be used to predict 20 different test cases.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#DATA COLLECTION & PREP:  
+**Libraries**  
+The list below includes all libraries needed to successfully reproduce this result.
+```{r libraries}
+suppressMessages(library(caret)); suppressMessages(library(rattle)); 
+suppressMessages(library(randomForest)); 
+library(rpart); library(rpart.plot); suppressMessages(library(gbm))
+```
+
+**Loading Data**  
+Please note that the data was loaded earlier during test trials without *na.strings* argument, however replacing *#DIV/0!* using gsub transformed the data-frame to matrix and hence was causing memory issues and I was unable to train a model. The code to using gsub when the data is loaded without the argument is part of appendix.
+
+```{r getdata}
+url_train <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv"
+url_test <- "https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv"
+
+if (file.exists("train Data.csv")){ # download only when file doesn't exist
+        train <- read.csv("train Data.csv", na.strings = c("NA", ""), strip.white=TRUE)
+        } else {
+        download.file(url_train,"train Data.csv")
+        train <- read.csv("train Data.csv", na.strings = c("NA", ""), strip.white=TRUE)
+        }
+
+if (file.exists("test Data.csv")){ # download only when file doesn't exist
+        test <- read.csv("test Data.csv", na.strings = c("NA", ""), strip.white=TRUE)
+        } else {
+        download.file(url_test,"test Data.csv")
+        test <- read.csv("test Data.csv", na.strings = c("NA", ""), strip.white=TRUE)
+        }
+```
+
+**Cleaning Data**  
+This section will be used to clean data that is very evidently not required. For example all columns that are all *NA* or or *#Div/0* or *NaN*. Similarly identifiers, time stamps and subject names will be removed to avoid them interfering with the data.
+
+Note: Regarding the string **#DIV/0!**, I observed that they are removed by taking column sum as zero for NA values and they are not counted towards it. This solved the problem of treating the string specifically. 
+```{r clean}
+train <- train[,-c(1:7)]
+train <- train[, colSums(is.na(train)) == 0]
+
+test <- test[,-c(1:7)]
+test <- test[, colSums(is.na(test)) == 0]
+```
+
+# MODEL SELECTION:  
+**Cross Validation Data Set**  
+Since the cleaned data set has about 20K rows, I am treating this as a moderate data set and hence splitting it 70:30.
+```{r split}
+set.seed(1234)#set.seed(7826) 
+idx <- createDataPartition(train$classe, p = 0.7, list = FALSE)
+train <- train[idx, ]
+cross <- train[-idx, ]
+
+```
+
+***Final Model:***
+I will be using the **5 fold random forest model** as the final model. I have compared it against a simple random forest, a boosting model and a decision tree. Then I have compared the accuracies of the four models and selected the one with the best accuracy. Even though the *accuracies of the 5 fold RF was same as a simple RF*, I decided to choose 5 fold because it slices the data 5 times and uses the average results which should, theoretically be better (the theoretical accuracy was not validated). 
+
+Please refer to appendix for the detailed code of the remaining models and a quick summary comparing the accuracies. Only the final selected model is described here. 
+```{r rForest}
+control <- trainControl(method = "cv", number = 5)
+fit_rf <- train(classe ~ ., data = train, method = "rf", trControl = control)
+plot(fit_rf)
+pred_rf <- predict(fit_rf, cross)
+conM_rf <- confusionMatrix(pred_rf, cross$classe)
+Acc1 <- conM_rf$overall[1]
+# The out of sample error should be 1 less the accuracy of the model.
+sam_er <- 1-Acc1
+```
+The out of sample error is ***`r print(sam_er, digits = 4)`***.
+
+**Quiz Results**  
+```{r quiz_predict}
+pred_quiz <- predict(fit_rf, test); pred_quiz
+```
+
+#APPENDIX:  
+##OTHER MODELS:
+***Boosting Model*** 
+```{r boost}
+fit_boost <- train(classe ~ ., data = train, method = "gbm", trControl = control, verbose = FALSE)
+pred_boost<-predict(fit_boost, newdata=cross)
+conM_gbm <- confusionMatrix(pred_boost, cross$classe)
+Acc2 <- conM_gbm$overall[1] # Gives accuracy
+```
+***Decision Tree***  
+```{r tree}
+fit_tree <- train(classe ~ ., data = train, method = "rpart")
+pred_tree<-predict(fit_tree, newdata=cross)
+conM_tree <- confusionMatrix(pred_tree, cross$classe)
+Acc3 <- conM_tree$overall[1] # Gives accuracy
+fancyRpartPlot(fit_tree$finalModel)
+```
+
+**Accuracy Tabulation**
+
+Model    |Accuracy
+---------|--------
+R. Forest|`r Acc1*100` %
+D. Tree  |`r Acc3*100` %
+Boosting |`r Acc2*100` %
+
+##OTHER CODE SNIPPETS:  
+**Failed gsub cleaning**  
+The below method was used initially as a cleaning and data prep approach, however led to memory issues and hence was abandoned. The same approach could be tried on test data set for consistency.
+```{r gsub, eval= FALSE}
+Training <- apply(Training, 2, function(x) gsub("#DIV/0!", NA, x)) 
+Training <- apply(Training, 2, function(x) gsub("^$|^ $", NA, x))
+Training <- as.data.frame(Training[, colSums(is.na(Training))==0])
+```
+
+##CITATION:  
+Velloso, E.; Bulling, A.; Gellersen, H.; Ugulino, W.; Fuks, H.
+[Qualitative Activity Recognition of Weight Lifting Exercises](http://groupware.les.inf.puc-rio.br/public/papers/2013.Velloso.QAR-WLE.pdf). Proceedings of 4th International Conference in Cooperation with SIGCHI (Augmented Human '13) . Stuttgart, Germany: ACM SIGCHI, 2013.
