@@ -7,5 +7,9 @@ The Shiny application in question is entirely up to the student (thats me). Make
 ##Shiny App  
 https://dheerajagarwal.shinyapps.io/DataProductsSimpleShiny/ 
 
+##App Pitch
+The presented using RStudio Presenter is uploaded on rpubs. Another option was to use slidify, however I found it easier to use rpres.  
+http://rpubs.com/DheerajAgarwal/MPGvsParam
+
 ## App.R file?
 This repo also contains a single app file with server and ui functions. However the app has not been tested and should not be used for evaluation.
