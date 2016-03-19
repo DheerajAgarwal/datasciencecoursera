@@ -1,0 +1,185 @@
+---
+title: 'Capstone: Milestone Report'
+author: "Dheeraj Agarwal"
+date: "March 17, 2016"
+output: 
+  html_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, options(scipen=999))
+
+```
+
+## Intent:
+The goal of this project is just to display that you've gotten used to working with the data and that you are on track to create your prediction algorithm.
+
+## Assumption:
+1. The data is already downloaded and available in the working directory.  
+2. The necessary libraries are installed.
+
+## Reading Data and Basic Analysis
+
+### Libraries:
+
+```{r lib}
+suppressMessages(library(LaF)) # to read large files as ASCII & sample while reading. Enhanced performance over `readLines`
+suppressMessages(library(tm)) # for text mining and corpus operations
+suppressMessages(library(SnowballC)) # for stemming root words
+suppressMessages(library(ggplot2)) # for plotting
+suppressMessages(library(RWeka)) # for tokenization. Need 64 bit java installed in you have a 64 bit machine.
+suppressMessages(library(quanteda)) # for word frequency and sparsity exploratory analysis
+suppressMessages(library(wordcloud)) # for additional exploratory analysis
+suppressMessages(library(tau)) # Quick identification of n-words that frequent together.
+suppressMessages(library(dplyr)) # for text cleaning and other mutations if needed
+library(RColorBrewer) # to add a bit of color to life
+```
+
+There are three files unzipped. Based on quick file exploration and attempting to read it with different encodings and parameters, the below are selected.
+
+### Reading Data:
+
+```{r read}
+blogs <- readLines("en_US.blogs.txt", encoding = "UTF-8") # read complete blogs file
+blogs <- iconv(blogs, "UTF-8", "ascii", sub = " ") # sneaking a cleaning task here
+
+twitter <- readLines("en_US.twitter.txt", encoding = "UTF-8", skipNul=TRUE) # read twitter file
+twitter<- iconv(twitter, "UTF-8", "ascii", sub = " ")
+
+con <- file("en_US.news.txt", "rb") # connection needed because otherwise due to imcomplete final line (?), the file is not read completely
+news <- readLines(con, encoding = "UTF-8") # read complete news file. 
+news<- iconv(news, "UTF-8", "ascii", sub = " ")
+close(con); rm(con)
+```
+
+Since these files are huge (based on time taken to read), a quick summary will help determine a sampling approach.
+
+### Exploratory Analysis 1:
+
+```{r explo.1, eval=FALSE}
+file.size("en_US.blogs.txt")
+length(blogs) # no of lines in the file
+
+file.size("en_US.news.txt")
+length(news) # no of lines in the file
+
+file.size("en_US.twitter.txt")
+length(twitter) # no of lines in the file
+
+summary(nchar(blogs))[6] # max characters in a line of the file
+summary(nchar(news))[6] # max characters in a line of the file
+summary(nchar(twitter))[6] # max characters in a line of the file
+```
+
+### File Parameters:
+
+File    |File Size| Total Lines| Characters
+--------|---------|------------|-----------
+Blogs   |`r file.size("en_US.blogs.txt")` KB|`r length(blogs)`|`r summary(nchar(blogs))[6]`
+News   |`r file.size("en_US.news.txt")` KB|`r length(news)`|`r summary(nchar(news))[6]`
+Blogs   |`r file.size("en_US.twitter.txt")` KB|`r length(twitter)`|`r summary(nchar(twitter))[6]`
+
+## Sampling & Prediction Approach
+
+Since working with such huge data sets is memory intensive, using basic random sampling, I will try to reduce the text to mine through. This sample
+would also be used for the final predictive analysis.
+
+The sampling has been arbitrarily chosen as ***3 %*** of the actual file parameters. However, based on the prediction results, this could later be increased or decreased. The exploratory analysis is however based on the initial arbitrary value.
+
+### Sample Creation:
+
+```{r sample}
+blogs_sample_size   <- round(.03 * length(blogs), 0)
+news_sample_size    <- round(.03 * length(news), 0) 
+twitter_sample_size <- round(.03 * length(twitter), 0)
+
+blogs_sample <- sample_lines("en_US.blogs.txt", n = blogs_sample_size, nlines = NULL) # approx 3% of population
+news_sample <- sample_lines("en_US.news.txt", n = news_sample_size , nlines = NULL) # approx 3% of population
+tweets_sample <- sample_lines("en_US.twitter.txt", n = twitter_sample_size, nlines = NULL) # approx 3% of population
+```
+
+It was observed, that *quanteda* and *tau* libraries provided some quick tricks for exploring the data. The word frequencies are determined using *quanteda* instead of *tm* due to its enhanced performance.
+
+Similarly *tau* was used to create a big-gram model with words that frequent together and the top 3 such combinations are displayed.
+
+### Exploratory Analysis 2:
+
+```{r explo.2}
+blogs_word_freq <- dfm(blogs_sample, verbose = FALSE)
+news_word_freq <- dfm(news_sample, verbose = FALSE)
+twitter_word_freq <- dfm(tweets_sample, verbose = FALSE)
+
+docfreq(blogs_word_freq)[1:11]
+docfreq(news_word_freq)[1:11]
+docfreq(twitter_word_freq)[1:11]
+
+bi.gram.blogs <- textcnt(blogs_sample, n = 2, method = "string") 
+bi.gram.blogs <- bi.gram.blogs[order(bi.gram.blogs, decreasing = TRUE)]
+bi.gram.blogs[1:3] # top three, 2-Word combinations
+```
+
+The function below will be used to clean the data, including stemming. Stop words are not removed on purpose. Stop words provided much needed context and sentence fluidity in natural language and hence they will be retained.
+
+### Clean Data:
+
+```{r clean}
+CleanR <- function(corpus){
+        tm_map(corpus, removeNumbers) %>%
+                tm_map(removePunctuation) %>%
+                tm_map(content_transformer(tolower)) %>%
+                tm_map(stripWhitespace) %>%
+                tm_map(stemDocument)
+}
+```
+
+### Word Clouds:  
+
+*tm* will be used to create a corpus, clean them using the **CleanR** function created above and then creating word clouds. Since stop words have not been removed, the cloud should have a few stop words as the most commonly used.
+
+```{r plots}
+rm(blogs); rm(news); rm(twitter)
+
+blogs_corpus <- VCorpus(DataframeSource(data.frame(blogs_sample)))
+news_corpus <- VCorpus(DataframeSource(data.frame(news_sample)))
+twitter_corpus <- VCorpus(DataframeSource(data.frame(tweets_sample)))
+
+rm(blogs_sample); rm(news_sample); rm(tweets_sample)
+
+blogs_corpus <- CleanR(blogs_corpus)
+news_corpus <- CleanR(news_corpus)
+twitter_corpus <- CleanR(twitter_corpus)
+
+pal <- brewer.pal(8,"Dark2")
+
+wordcloud(blogs_corpus, max.words = 75, random.order = FALSE, colors = pal)
+wordcloud(news_corpus, max.words = 75, random.order = FALSE, colors = pal)
+wordcloud(twitter_corpus, max.words = 75, random.order = FALSE, colors = pal)
+```
+
+## Prediction & Shiny:
+
+The below section briefly explains the approach for prediction and creating a shiny app. At the time of writing this report, ***profanity filter*** has not be decided. 
+
+### Prediction Approach: 
+
+The sampled corpus would be used to crate bi and tri gram frequencies. The data frames would then be used to predict the next word from the n-gram frequency table. 
+
+The top two words per the frequency table would be returned. Only the last word will be used to predict even though the input may be more than one word.
+
+### Shiny App:
+
+The app would take user input as characters strings and use the last input word and return top two words that could be next.
+
+## APPENDIX:
+
+### Downloading Data:
+
+```{r download, eval=FALSE}
+URL <- "https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
+
+if (!file.exists("en_US.blogs.txt")){
+        download.file(url = URL, "Coursera-SwiftKey.zip", mode = "wb")
+        unzip("Coursera-SwiftKey.zip")
+}
+```
