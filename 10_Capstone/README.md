@@ -15,5 +15,5 @@ The presented using RStudio Presenter is uploaded on rpubs. Another option was t
 TBD
 
 ## Code Files
-There are several code files for better organization of the code. The files are numbered 01 to TBD. And must be run in sequence for the code to be reproducible.
+There are several code files for better organization of the code. The files are numbered 01 to TBD. These must be run in sequence for the code to be reproducible. Please refer to the [codebook](https://pages.github.com/) for specific details on the R files.
 
