@@ -24,7 +24,7 @@ shinyUI(
           br(),
           a(href="http://www.rpubs.com/DheerajAgarwal/CapstoneMilestone", "Interim Report"),
           br(),
-          a(href="http://commons.wikimedia.org/wiki/User:Sfoskett", "R-Presentation"),
+          a(href="http://www.rpubs.com/DheerajAgarwal/WordPred_Pitch", "R-Presentation"),
           h4("Important Note / Caution:"),
           h5("Due the the N-Grams models being loaded, sometimes it may take some time before the preiction works. If you see an error message of an object not found, just try back after some time.")
         )
