@@ -6,10 +6,9 @@
           #DATE: April 18, 2016
 #############################################
 
+source("08_shinyfunctions.R")
+
 library(shiny)
-
-source("07_shinyfunctions.R")
-
 
 shinyServer(
   function(input, output) {

@@ -10,11 +10,11 @@ blogs <- readLines(temp, encoding= "UTF-8", warn = F)
 close(temp)
 
 temp <- file("en_US.news.txt", open = "rb")
-twitter <- readLines(temp, encoding= "UTF-8", warn = F)
+news <- readLines(temp, encoding= "UTF-8", warn = F)
 close(temp)
 
 temp <- file("en_US.twitter.txt", open = "rb")
-news <- readLines(temp, encoding= "UTF-8", warn = F)
+twitter <- readLines(temp, encoding= "UTF-8", warn = F)
 close(temp)
 
 rm(temp)
@@ -25,7 +25,7 @@ twitter <- iconv(twitter, from="UTF-8", to="latin1", sub=" ")
 profanity_list <- readLines("http://badwordslist.googlecode.com/files/badwords.txt", warn = F)
 profanity_list <- tolower(profanity_list)
 profanity_list <- str_replace_all(profanity_list, "\\(", "\\\\(")
-save(profanity_list, file = "profanity_list.RData")
+saveRDS(profanity_list, file = "profanity_list.rds")
 rm(profanity_list)
 
 save.image("allsource.RData")

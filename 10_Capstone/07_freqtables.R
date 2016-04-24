@@ -17,12 +17,11 @@ tot <- sum(freq.tbl.uni$count)
 freq.tbl.uni <- mutate(freq.tbl.uni, appear.percent = round(count/tot, 7))
 freq.tbl.uni$count <- NULL
 setkeyv(freq.tbl.uni, c("word0", "appear.percent"))
-save(freq.tbl.uni, file = "freq.tbl.uni.RData")
+saveRDS(freq.tbl.uni, file = "freq.tbl.uni.rds")
 rm(tot, freq.tbl.uni)
 
 freq.tbl.bi <- data.table(text = names(train2), as.matrix(train2))
 setnames(freq.tbl.bi, "V1", "count")
-freq.tbl.bi <- freq.tbl.bi
 freq.tbl.bi[, c("word1", "word0")  := do.call(Map, c(f = c, strsplit(text, " ")))]
 freq.tbl.bi <- mutate(freq.tbl.bi, appear.percent = round(count/train1[word1][[1]], 7))
 freq.tbl.bi$text <- NULL
@@ -30,7 +29,7 @@ freq.tbl.bi$count <- NULL
 setkey(freq.tbl.bi, word1)
 freq.tbl.bi <- freq.tbl.bi[,lapply(.SD, function(x) head(x, 5)), by = key(freq.tbl.bi)]
 setkeyv(freq.tbl.bi, c("word1", "appear.percent", "word0"))
-save(freq.tbl.bi, file = "freq.tbl.bi.RData")
+saveRDS(freq.tbl.bi, file = "freq.tbl.bi.rds")
 rm(freq.tbl.bi, train1)
 
 freq.tbl.tri <- data.table(text = names(train3), as.matrix(train3))
@@ -43,5 +42,5 @@ freq.tbl.tri$count <- NULL
 setkeyv(freq.tbl.tri, c("word2", "word1"))
 freq.tbl.tri <- freq.tbl.tri[,lapply(.SD, function(x) head(x, 5)),by = key(freq.tbl.tri)]
 setkeyv(freq.tbl.tri, c("word2", "word1", "appear.percent", "word0"))
-save(freq.tbl.tri, file = "freq.tbl.tri.RData")
+saveRDS(freq.tbl.tri, file = "freq.tbl.tri.rds")
 rm(list = ls())

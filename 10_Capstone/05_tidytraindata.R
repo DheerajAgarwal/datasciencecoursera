@@ -9,7 +9,7 @@
 
 # Creating cleaned version of the data for processing
 suppressMessages(source("01_libraries.R"))
-source("03_cleaner.R")
+source("04_cleaner.R")
 
 load("allsource.RData")
 
@@ -17,10 +17,10 @@ blogs <- CleanR(blogs)
 blogs <- Splitter(blogs)
 
 news <- CleanR(news)
-news <- splitter(news)
+news <- Splitter(news)
 
 twitter <- CleanR(twitter)
-twitter <- Splitter(blogs)
+twitter <- Splitter(twitter)
 
 alldata <- c(blogs, twitter, news)
 rm(blogs, twitter, news)
@@ -29,8 +29,8 @@ save(alldata, file = "cleandata.RData")
 
 #Creating Traning data set
 
-set.seed(42)
-inFrame <- createDataPartition(y = 1:length(alldata), p = 0.15, list = F)
+set.seed(123)
+inFrame <- createDataPartition(y = 1:length(alldata), p = 0.20, list = F)
 train <- alldata[inFrame]
 rm(alldata, inFrame)
 

@@ -11,8 +11,8 @@ http://www.rpubs.com/DheerajAgarwal/CapstoneMilestone
 TBD
 
 ##App Slide
-The presented using RStudio Presenter is uploaded on rpubs. Another option was to use slidify, however I found it easier to use rpres.  
-TBD
+The presentation using RStudio Presenter is uploaded on rpubs. Another option was to use slidify, however I found it easier to use rpres.
+Presentation [http://rpubs.com/DheerajAgarwal/Capstone_Prediction]
 
 ## Code Files
 There are several code files for better organization of the code. The files are numbered 01 to TBD. These must be run in sequence for the code to be reproducible. Please refer to the [codebook](https://github.com/DheerajAgarwal/datasciencecoursera/blob/master/10_Capstone/Codebook.md) for specific details on the R files.

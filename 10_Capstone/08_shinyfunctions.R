@@ -7,17 +7,16 @@
 #############################################
 
 suppressMessages(source("01_libraries.R"))
+source("04_cleaner.R")
 
 st_an <- Maxent_Sent_Token_Annotator()
 wt_an <- Maxent_Word_Token_Annotator()
 pt_an <- Maxent_POS_Tag_Annotator()
 
-load("freq.tbl.uni.RData")
-load("freq.tbl.bi.RData")
-load("freq.tbl.tri.RData")
-load("profanity_list.RData")
-
-source("03_cleaner.R")
+freq.tbl.uni <- readRDS("./data/freq.tbl.uni.rds")
+freq.tbl.bi <- readRDS("./data/freq.tbl.bi.rds")
+freq.tbl.tri <- readRDS("./data/freq.tbl.tri.rds")
+profanity_list <- readRDS("./data/profanity_list.rds")
 
 #Text Parser
 parse_text <- function(text) {

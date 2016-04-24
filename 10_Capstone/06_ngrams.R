@@ -1,10 +1,11 @@
 #############################################
-          #SCRIPT NUMBER: 01
+          #SCRIPT NUMBER: 06
           #AUTHOR: Dheeraj Agarwal
           #PURPOSE: Create 2 & 3 N-Grams
           #DEPENDENCIES: Script 05
           #DATE: April 18, 2016
 #############################################
+source("01_libraries.R")
 load("train.RData")
 
 train1 <- textcnt(train, method = "string", split = "[[:space:]]", n = 1L, decreasing = T)
@@ -13,3 +14,4 @@ train3 <- textcnt(train, method = "string", split = "[[:space:]]", n = 3L, decre
 rm(train)
 
 save.image("alltrains.RData")
+rm(list = ls())
